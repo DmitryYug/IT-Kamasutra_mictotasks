@@ -1,6 +1,11 @@
 import React, {ChangeEvent, useState} from "react";
 
-function InputBtnBlock () {
+type InputBtnBlockPropsType = {
+    addMessageBtnHandler: (messageText: string) => void
+}
+
+
+function InputBtnBlock (props: InputBtnBlockPropsType) {
 
     let [title, setTitle] = useState('')
 
@@ -9,10 +14,13 @@ function InputBtnBlock () {
         // console.log(title)
     }
 
+
+
+
     return (
         <div>
             <input onChange={onChangeInputHandler}/>
-            <button>+</button>
+            <button onClick={() => props.addMessageBtnHandler(title)}>+</button>
         </div>
     )
 }

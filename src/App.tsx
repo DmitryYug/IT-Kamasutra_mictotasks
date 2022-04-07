@@ -51,7 +51,21 @@ function App () {
         {message: 'message3'}
     ])
 
-    const messages = message.map((m,index) => {
+
+    let newMessageArr = message
+    console.log(newMessageArr)
+
+
+
+    const addMessageBtnHandler = (messageText: string) => {
+        newMessageArr.push({message: messageText})
+        setMessage(newMessageArr)
+
+        // console.log(newMessageArr)
+    }
+
+
+    const messagesToRender = newMessageArr.map((m,index) => {
         return (
             <div key={index}>
                 {m.message}
@@ -61,9 +75,11 @@ function App () {
 
     return (
         <div className={'App'}>
-            <InputBtnBlock/>
+            <InputBtnBlock
+                addMessageBtnHandler = {addMessageBtnHandler}
+            />
             <div>
-                {messages}
+                {messagesToRender}
             </div>
         </div>
     )
